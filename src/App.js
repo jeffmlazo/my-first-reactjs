@@ -1,32 +1,28 @@
-import logo from "./logo.svg";
-import "./App.css";
+// import logo from "./logo.svg";
+// import "./App.css";
+
+import Header from "./components/Header";
 
 function App() {
+  const name = "Jeprox";
+  const x = true;
+  // const x = false;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h1 className="helloworld">asd asd</h1>
-        <div>
-          <li>This is a test for my coding standards</li>
-          <li>This is a test for my coding standards</li>
-          <li>This is a test for my coding standards</li>
-          <li>This is a test for my coding standards</li>
-          <li>This is a test for my coding standards</li>
-        </div>
+      <h1 className="name">Hi My Name is {name}</h1>
+      <div>
+        <h2>Auto Computation</h2>
+        <p>One Plus One = {1 + 1}</p>
+        <p>Two Times Two = {2 * 2}</p>
+        <p>Four Divided By Four = {4 / 4}</p>
+        <p>Six Minus One = {6 - 1}</p>
+        <p>Ternary operator {x ? "Truelala" : "Falselala"}</p>
+      </div>
 
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>This is a component from the Header component</h2>
+      {/* <Header titulo="Pass Titulo" /> */}
+      <Header />
     </div>
   );
 }
