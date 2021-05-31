@@ -1,12 +1,55 @@
 // import logo from "./logo.svg";
 // import "./App.css";
 
+import { useState } from "react";
 import Header from "./components/Header";
+import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 
 function App() {
   const name = "Jeprox";
   const x = true;
   // const x = false;
+
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      text: "test1",
+      day: "Monday",
+      reminder: true,
+    },
+    {
+      id: 2,
+      text: "test2",
+      day: "Tuesday",
+      reminder: false,
+    },
+    {
+      id: 3,
+      text: "test3",
+      day: "Wednesday",
+      reminder: true,
+    },
+  ]);
+
+  // Add Task
+  const addTask = (task) => {
+    console.log(task);
+  };
+
+  // Delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  // Toggle Reminder
+  const toggleReminder = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
 
   return (
     <div className="App">
@@ -20,9 +63,24 @@ function App() {
         <p>Ternary operator {x ? "Truelala" : "Falselala"}</p>
       </div>
 
-      <h2>This is a component from the Header component</h2>
-      {/* <Header titulo="Pass Titulo" /> */}
-      <Header />
+      <div className="container">
+        <h2>This is a component from the Header component</h2>
+        <Header titulo="Pass Titulo" prop2={5} />
+        <AddTask onAdd={addTask} />
+        {/* <Tasks /> */}
+        {tasks.length > 0 ? (
+          <Tasks
+            tasks={tasks}
+            onDelete={deleteTask}
+            onToggle={toggleReminder}
+          />
+        ) : (
+          "No Tasks To Show"
+        )}
+        {/* <Header titulo="Pass Titulo" prop2="dd" /> */}
+        {/* <Header titulo={44} /> */}
+        {/* <Header /> */}
+      </div>
     </div>
   );
 }
