@@ -11,6 +11,7 @@ function App() {
   const x = true;
   // const x = false;
 
+  const [showAddTask, setShowAddTask] = useState(true);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -34,7 +35,11 @@ function App() {
 
   // Add Task
   const addTask = (task) => {
-    console.log(task);
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newTask = { id, ...task };
+    setTasks([...tasks, newTask]);
+
+    // console.log(id);
   };
 
   // Delete Task
@@ -65,8 +70,12 @@ function App() {
 
       <div className="container">
         <h2>This is a component from the Header component</h2>
-        <Header titulo="Pass Titulo" prop2={5} />
-        <AddTask onAdd={addTask} />
+        {/* <Header titulo="Pass Titulo" prop2={5} /> */}
+        <Header
+          onAdd={() => setShowAddTask(!showAddTask)}
+          showAdd={showAddTask}
+        />
+        {showAddTask && <AddTask onAdd={addTask} />}
         {/* <Tasks /> */}
         {tasks.length > 0 ? (
           <Tasks
