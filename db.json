@@ -17,6 +17,18 @@
       "text": "test3",
       "day": "Wednesday",
       "reminder": true
+    },
+    {
+      "text": "task4",
+      "day": "Thursday",
+      "reminder": true,
+      "id": 4
+    },
+    {
+      "text": "test5",
+      "day": "Friday",
+      "reminder": true,
+      "id": 5
     }
   ]
 }
